@@ -1,0 +1,77 @@
+{{!
+    This file is part of mod_grouptool for Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template mod_eitcoursegrouptools/overviewgroup
+
+   
+}}
+<div class="box generalbox groupcontainer p-y-1 {{#inactive}}dimmed_text{{/inactive}}" id="yui_3_17_2_1_1494398782636_28">
+    <div class="groupinfo">
+        <h3>{{name}}{{!
+            }}{{#outdated}}<span class="badge badge-info">{{#str}} outdated, mod_eitcoursegrouptools {{/str}}</span>{{/outdated}}{{!
+            }}{{#uptodate}}<span class="badge badge-success">{{#str}} uptodate, mod_eitcoursegrouptools {{/str}}</span>{{/uptodate}}{{!
+            }}{{#inactive}}<span class="badge badge-default">{{#str}} inactive, core {{/str}}</span>{{/inactive}}{{!
+        }}</h3>
+
+        <span class="groupsize">{{#str}}total, mod_eitcoursegrouptools{{/str}} {{total}}</span> / {{!
+        }}<span class="registered">{{#str}}registered, mod_eitcoursegrouptools{{/str}} {{registered}}</span> / {{!
+        }}<span class="queued">{{#str}}queued, mod_eitcoursegrouptools{{/str}} {{queued}}</span> / {{!
+        }}<span class="free">{{#str}}free, mod_eitcoursegrouptools{{/str}} {{free}}</span>
+    </div>
+    <table class="centeredblock userlist table table-striped table-hover table-condensed">
+        <thead>
+            <tr>
+                <th class="text-center">{{#str}}status, mod_eitcoursegrouptools{{/str}}{{#statushelp}}{{>core/help_icon}}{{/statushelp}}</th>
+                <th class="">{{#str}} fullname, core {{/str}}</th>
+                <th class="">{{#str}} email, core {{/str}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#reg_data}}
+            <tr class="">
+                <td class="status" style="width:200px; color:#9B9B9B">{{status}}</td>
+                <td class="userlink"><a href="{{userlink}}&id={{userid}}" title="{{name}}">{{name}}</a></td>
+                <td class="email"><span class="email" style="float:left">{{email}}</span></td>
+            </tr>
+        {{/reg_data}}
+        {{#mreg_data}}
+            <tr class="">
+                <td class="status" style="width:200px; color:#9B9B9B">{{status}}</td>
+                <td class="userlink"><a href="{{userlink}}&id={{userid}}" title="{{name}}">{{name}}</a></td>
+                <td class="email"><span class="email">{{email}}</span></td>
+            </tr>
+        {{/mreg_data}}
+        {{^reg_data}}{{^mreg_data}}
+            <tr class="regentry reg">
+                <td class="no_registrations" colspan="4">{{#str}} no_registrations, mod_eitcoursegrouptools {{/str}}</td>
+            </tr>
+        {{/mreg_data}}{{/reg_data}}
+        {{#queue_data}}
+            <tr class="">
+                <td class="status" style="width:150px; color:#9B9B9B">{{rank}}</td>
+                <td class="userlink"><a href="{{userlink}}&id={{userid}}" title="{{name}}">{{name}}</a></td>
+                <td class="email"><span class="email">{{email}}</span></td>
+            </tr>
+        {{/queue_data}}
+        {{^queue_data}}
+            <tr class="queueentry queue">
+                <td class="no_queues" colspan="4">{{#str}} nobody_queued, mod_eitcoursegrouptools {{/str}}</td>
+            </tr>
+        {{/queue_data}}
+        </tbody>
+        </table>
+</div>

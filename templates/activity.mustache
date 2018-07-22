@@ -1,0 +1,47 @@
+<br>
+
+<div>
+ <form action="action_redir.php" method="post" id="userform">
+ <table class="centeredblock userlist table table-striped table-hover table-condensed">
+        <thead>
+            <tr>
+                <th class="text-center">UID</th>
+                <th class="">Fullname</th>
+                <th class="">Associated groups</th>
+                <th class="">Unique participations</th>
+                <th class="">Total activity*</th>
+                <th class=""></th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#mylist}}
+
+            <tr class="">
+                <td class="status " style="width:150px; color:#9B9B9B">{{UID}}</td>
+                <td class="userlink"><a href="../../user/profile.php?id={{UID}}" title="">{{User}}</a></td>
+                <td class="email"><span class="email" style="float:left">{{Groups}}</span></td>
+                <td class="email">{{Unique}}</td>
+                <td class="email"><span class="email" style="float:left">{{Counts}}</span></td>
+                <td class="email"><span class="email" style="float:left">
+                   
+                    <input type="checkbox" class="usercheckbox" name="users[]" value="{{UID}}" /><br>
+                    </span>
+                </td>
+            </tr>
+        
+        {{/mylist}}
+      
+ 
+        </tbody>
+        </table>
+  <input type="submit" value="Notify selected users" class="btn btn-secondary" />
+           </form>
+</div>
+
+
+
+
+
+{{^mylist}}
+Data returned empty or corrupt.
+{{/mylist}}
